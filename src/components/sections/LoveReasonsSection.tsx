@@ -64,12 +64,6 @@ const reasons: Reason[] = [
     title: 'Nossas Memórias',
     description: 'Cada memória que criamos juntos é um tesouro que guardo no coração.',
   },
-  {
-    id: 10,
-    icon: Gift,
-    title: 'Você É Meu Presente',
-    description: 'Você é o maior presente que a vida poderia me dar. Obrigado por existir.',
-  },
 ];
 
 export default function LoveReasonsSection() {
