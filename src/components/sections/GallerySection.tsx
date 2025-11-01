@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { X, ChevronLeft, ChevronRight, Plus } from 'lucide-react';
 import { Dialog, DialogContent } from '../ui/dialog';
 import { Button } from '../ui/button';
+import ImageWithHeicSupport from '../ImageWithHeicSupport';
+import { galleryPhotos } from '../../data/photos';
 
 interface Photo {
   id: number;
@@ -10,44 +12,35 @@ interface Photo {
   caption: string;
 }
 
-const photos: Photo[] = [
-  {
-    id: 1,
-    url: 'https://images.unsplash.com/photo-1606771732954-ca3ea387e6bc?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTAwNDR8MHwxfHNlYXJjaHwxfHxjb3VwbGUlMjBzdW5zZXQlMjBzaWxob3VldHRlJTIwcm9tYW50aWN8ZW58MHwwfHx8b3JhbmdlfDE3NjE5NjIxMDd8MA&ixlib=rb-4.1.0&q=85',
-    alt: 'Romantic sunset - Samuel Jerónimo on Unsplash',
-    caption: 'Nosso pôr do sol perfeito',
-  },
-  {
-    id: 2,
-    url: 'https://images.unsplash.com/photo-1741217531183-73f9f986f5c8?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTAwNDR8MHwxfHNlYXJjaHw4fHxjb3VwbGUlMjBsYXVnaGluZyUyMGhhcHB5JTIwcG9ydHJhaXR8ZW58MHwxfHx8MTc2MTk2MjEwN3ww&ixlib=rb-4.1.0&q=85',
-    alt: 'Couple laughing - Alexander Mass on Unsplash',
-    caption: 'Risadas que aquecem o coração',
-  },
-  {
-    id: 3,
-    url: 'https://images.unsplash.com/flagged/photo-1573428727285-f40715e2ba60?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTAwNDR8MHwxfHNlYXJjaHw4fHxjb3VwbGUlMjBiZWFjaCUyMG9jZWFuJTIwdmFjYXRpb258ZW58MHwwfHxibHVlfDE3NjE5NjIxMTB8MA&ixlib=rb-4.1.0&q=85',
-    alt: 'Beach moment - Nico Castez on Unsplash',
-    caption: 'Nosso dia na praia',
-  },
-  {
-    id: 4,
-    url: 'https://images.unsplash.com/photo-1719410876441-48357b53e6fd?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTAwNDR8MHwxfHNlYXJjaHw4fHxjb3VwbGUlMjBkYW5jaW5nJTIwcm9tYW50aWMlMjBlbGVnYW50fGVufDB8MXx8fDE3NjE5NjIxMTN8MA&ixlib=rb-4.1.0&q=85',
-    alt: 'Dancing together - Raymond Petrik on Unsplash',
-    caption: 'Dançando sob as estrelas',
-  },
-  {
-    id: 5,
-    url: 'https://images.unsplash.com/photo-1595913042842-0d0c5f687c78?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTAwNDR8MHwxfHNlYXJjaHw3fHxjb3VwbGUlMjBjb2ZmZWUlMjBjYWZlJTIwY296eXxlbnwwfDJ8fHwxNzYxOTYyMTEzfDA&ixlib=rb-4.1.0&q=85',
-    alt: 'Cozy cafe - Hyeryeong Song on Unsplash',
-    caption: 'Nosso café favorito',
-  },
-  {
-    id: 6,
-    url: 'https://images.unsplash.com/photo-1559641612-fc140738811c?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTAwNDR8MHwxfHNlYXJjaHwxMHx8Y291cGxlJTIwaGlraW5nJTIwbmF0dXJlJTIwb3V0ZG9vcnxlbnwwfDB8fGdyZWVufDE3NjE5NjIxMTR8MA&ixlib=rb-4.1.0&q=85',
-    alt: 'Nature adventure - Art of Hoping on Unsplash',
-    caption: 'Aventuras na natureza',
-  },
+const captions = [
+  'Nosso momento especial',
+  'Amor verdadeiro',
+  'Juntos para sempre',
+  'Nosso dia perfeito',
+  'Memórias inesquecíveis',
+  'Você e eu',
+  'Nosso amor',
+  'Momentos mágicos',
+  'Para sempre',
+  'Meu tudo',
+  'Nosso sorriso',
+  'Felicidade',
+  'Amor infinito',
+  'Nosso mundo',
+  'Você é minha vida',
+  'Nosso paraíso',
+  'Juntos',
+  'Meu amor',
+  'Nossa história',
+  'Eternamente seus',
 ];
+
+const photos: Photo[] = galleryPhotos.map((url, index) => ({
+  id: index + 1,
+  url,
+  alt: 'Nossa foto especial',
+  caption: captions[index] || 'Nosso momento especial',
+}));
 
 export default function GallerySection() {
   const [selectedPhoto, setSelectedPhoto] = useState<number | null>(null);
@@ -83,7 +76,7 @@ export default function GallerySection() {
               onClick={() => setSelectedPhoto(index)}
             >
               <div className="relative overflow-hidden rounded-2xl glass-card">
-                <img
+                <ImageWithHeicSupport
                   src={photo.url}
                   alt={photo.alt}
                   className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-110"
@@ -139,7 +132,7 @@ export default function GallerySection() {
                 <ChevronRight size={32} />
               </Button>
 
-              <img
+              <ImageWithHeicSupport
                 src={photos[selectedPhoto].url}
                 alt={photos[selectedPhoto].alt}
                 className="w-full h-auto max-h-[90vh] object-contain"

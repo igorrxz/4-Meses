@@ -20,7 +20,7 @@ export default function MusicPlayer() {
   return (
     <div className="fixed bottom-8 right-8 z-40 glass-card rounded-full p-3 shadow-lg">
       <audio ref={audioRef} loop>
-        <source src="/music/romantic-song.mp3" type="audio/mpeg" />
+        <source src="/src/music/Matheus & Kauan - Ser Humano Ou Anjo [wilY_GMUWJo].mp3" type="audio/mpeg" />
       </audio>
       
       <div className="flex items-center gap-2">

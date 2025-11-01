@@ -90,26 +90,26 @@ export default function SecretSection() {
               <p>
                 Desde o primeiro momento em que te chamei assim, sabia que você
                 era especial. Você não é apenas minha namorada, você é minha
-                melhor amiga, minha confidente, minha inspiração.
+                melhor amiga, minha parceira eterna, minha inspiração.
               </p>
               <p>
                 Cada dia ao seu lado é uma nova aventura, um novo motivo para
                 sorrir, uma nova razão para agradecer. Você me faz querer ser
                 uma pessoa melhor, me inspira a sonhar mais alto, e me dá forças
-                para enfrentar qualquer desafio.
+                para enfrentar qualquer desafio, me leva pra mais perto de Deus.
               </p>
               <p>
-                Este site é apenas uma pequena demonstração do meu amor por você.
+                Esse site é apenas uma pequena demonstração do meu amor por você.
                 As palavras nunca serão suficientes para expressar o quanto você
                 significa para mim, mas espero que cada detalhe aqui mostre o
-                quanto eu me importo.
+                quanto eu me importo e vou dar o meu máximo para te fazer a garota mais feliz do mundo.
               </p>
               <p className="heading-sm text-primary mt-8">
                 Eu te amo mais do que tudo neste mundo! 💙
               </p>
               <p className="body-md text-muted-foreground italic">
                 Para sempre seu,<br />
-                Seu namorado apaixonado
+                Seu fofinho
               </p>
             </div>
           </div>

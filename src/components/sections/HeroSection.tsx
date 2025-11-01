@@ -1,5 +1,7 @@
 import { ChevronDown } from 'lucide-react';
 import { Button } from '../ui/button';
+import ImageWithHeicSupport from '../ImageWithHeicSupport';
+import { heroImage } from '../../data/photos';
 
 export default function HeroSection() {
   const scrollToTimeline = () => {
@@ -13,9 +15,9 @@ export default function HeroSection() {
     >
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
-        <img
-          src="https://images.unsplash.com/photo-1738956952892-7553e0327906?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTAwNDR8MHwxfHNlYXJjaHwyfHxjb3VwbGUlMjBlbWJyYWNlJTIwcm9tYW50aWMlMjBsb3ZlfGVufDB8MHx8fDE3NjE5NjIxMDd8MA&ixlib=rb-4.1.0&q=85"
-          alt="Romantic couple embracing - Micah & Sammie Chaffin on Unsplash"
+        <ImageWithHeicSupport
+          src={heroImage}
+          alt="Nossa foto especial"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-baby-blue/40 via-light-blue/30 to-background/90" />

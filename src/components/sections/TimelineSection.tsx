@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Calendar } from 'lucide-react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '../ui/dialog';
 import { Badge } from '../ui/badge';
+import ImageWithHeicSupport from '../ImageWithHeicSupport';
+import { timelinePhotos } from '../../data/photos';
 
 interface Milestone {
   id: number;
@@ -16,30 +18,48 @@ interface Milestone {
 const milestones: Milestone[] = [
   {
     id: 1,
-    date: '13 de Julho, 2025',
+    date: '01 de Maio, 2025',
     title: 'Nosso Primeiro Encontro',
     description: 'O dia em que tudo começou...',
     fullStory: 'Foi neste dia mágico que nossos olhares se cruzaram pela primeira vez. Desde então, cada momento ao seu lado tem sido uma aventura incrível. Você iluminou minha vida de uma forma que eu nunca imaginei ser possível.',
-    image: 'https://images.unsplash.com/photo-1752824063419-41dbb62c213e?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTAwNDR8MHwxfHNlYXJjaHwxfHxjb3VwbGUlMjBoYXBweSUyMHNtaWxpbmclMjBkYXRlfGVufDB8MXx8fDE3NjE5NjIxMDd8MA&ixlib=rb-4.1.0&q=85',
-    imageAlt: 'Happy couple smiling - Hoi An Photographer on Unsplash',
+    image: timelinePhotos[0],
+    imageAlt: 'Nossa foto especial',
   },
   {
     id: 2,
-    date: 'Agosto, 2025',
-    title: 'Nosso Primeiro Passeio',
-    description: 'Caminhando juntos pela primeira vez...',
-    fullStory: 'Lembro-me de cada detalhe daquele dia. Suas mãos nas minhas, o sorriso no seu rosto, a forma como o sol iluminava seus olhos. Foi quando percebi que queria passar todos os meus dias ao seu lado.',
-    image: 'https://images.unsplash.com/photo-1649289660905-5ca136d6e3ce?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTAwNDR8MHwxfHNlYXJjaHw4fHxjb3VwbGUlMjBob2xkaW5nJTIwaGFuZHMlMjB3YWxraW5nJTIwb3V0ZG9vcnxlbnwwfDB8fHwxNzYxOTYyMTA3fDA&ixlib=rb-4.1.0&q=85',
-    imageAlt: 'Couple holding hands - Joeyy Lee on Unsplash',
+    date: '06 de Junho, 2025',
+    title: 'Nosso Primeiro Jantar',
+    description: 'Jantamos e olhamos a cidade juntinhos pela primeira vez...',
+    fullStory: 'Lembro-me de cada detalhe daquele dia. Suas mãos nas minhas, o sorriso no seu rosto, a sua pupila dilatada, e principalmente o nervosismo pra ter aquela conversa kakaak... E a certeza de que queria passar todos os meus dias ao seu lado, só aumentava.',
+    image: timelinePhotos[1],
+    imageAlt: 'Nossa foto especial',
   },
   {
     id: 3,
-    date: 'Hoje e Sempre',
-    title: 'Nosso Amor Cresce',
+    date: '12 de Junho, 2025',
+    title: 'Nos assumimos publicamente',
+    description: 'Mesmo sem pedido...',
+    fullStory: 'Que sorte a minha de ter encontrado uma garota tão emocionada quanto eu KKKKKKKKK. Como pode ela ter aceitado assumir nosso quase namoro assim...',
+    image: timelinePhotos[2],
+    imageAlt: 'Nossa foto especial',
+  },
+  {
+    id: 4,
+    date: '22 de Junho, 2025',
+    title: 'Nosso Amor Cresce, já começam a nos tratar como casal',
     description: 'Cada dia mais apaixonado...',
-    fullStory: 'A cada dia que passa, meu amor por você se torna mais profundo. Você é minha inspiração, minha alegria, meu tudo. Obrigado por fazer parte da minha vida e por me fazer a pessoa mais feliz do mundo.',
-    image: 'https://images.unsplash.com/photo-1735838567596-915e21f721e0?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTAwNDR8MHwxfHNlYXJjaHwzfHxjb3VwbGUlMjBjZWxlYnJhdGluZyUyMGhhcHB5JTIwYW5uaXZlcnNhcnl8ZW58MHwyfHx8MTc2MTk2MjEwN3ww&ixlib=rb-4.1.0&q=85',
-    imageAlt: 'Couple celebrating - Shlomi Glantz on Unsplash',
+    fullStory: 'Quem diria, em tão pouco tempo, e já eramos o casal do ano KKKKKKKKKK EU TE AMO GAROTA, Você é minha inspiração, minha alegria, meu tudo. Obrigado por fazer parte da minha vida e por me fazer a pessoa mais feliz do mundo.',
+    image: timelinePhotos[3],
+    imageAlt: 'Nossa foto especial',
+  },
+  {
+    id: 5,
+    date: '13 de Julho, 2025',
+    title: 'Enfim, o Pedido',
+    description: 'Serei eternamente grato pela forma que foi...',
+    fullStory: 'Parece que foi ontem, morrendo de ansiedade pra fazer o pedido, entregar a aliança que foi uma luta pra convencer tua mãe, com vergonha por ser na frente do meu irmão... mas foi maravilhoso e único.',
+    image: timelinePhotos[4],
+    imageAlt: 'Nossa foto especial',
   },
 ];
 
@@ -84,7 +104,7 @@ export default function TimelineSection() {
                       {milestone.date}
                     </Badge>
                     
-                    <img
+                    <ImageWithHeicSupport
                       src={milestone.image}
                       alt={milestone.imageAlt}
                       className="w-full h-48 object-cover rounded-xl mb-4"
@@ -114,7 +134,7 @@ export default function TimelineSection() {
           </DialogHeader>
           {selectedMilestone && (
             <div className="space-y-4">
-              <img
+              <ImageWithHeicSupport
                 src={selectedMilestone.image}
                 alt={selectedMilestone.imageAlt}
                 className="w-full h-64 object-cover rounded-xl"
