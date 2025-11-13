@@ -5,6 +5,7 @@ import path from 'path'
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: '/4-Meses/', // 👈 ESSA LINHA É A IMPORTANTE
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
