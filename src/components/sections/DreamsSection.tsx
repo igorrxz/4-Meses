@@ -1,7 +1,6 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Home, Plane, Camera, Heart, GraduationCap, Baby, Plus } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
-import { Progress } from '../ui/progress';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '../ui/dialog';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
@@ -21,21 +20,21 @@ export default function DreamsSection() {
       icon: Home,
       title: 'Nossa Casa dos Sonhos',
       description: 'Construir um lar aconchegante onde possamos criar memórias juntos',
-      progress: 30,
+      progress: 0,
     },
     {
       id: 2,
       icon: Plane,
       title: 'Viajar pelo Mundo',
       description: 'Conhecer lugares incríveis e viver aventuras ao redor do mundo',
-      progress: 15,
+      progress: 0,
     },
     {
       id: 3,
       icon: Camera,
       title: 'Álbum de Memórias',
       description: 'Documentar cada momento especial da nossa jornada juntos',
-      progress: 50,
+      progress: 0,
     },
     {
       id: 4,
@@ -49,7 +48,7 @@ export default function DreamsSection() {
       icon: GraduationCap,
       title: 'Crescer Juntos',
       description: 'Apoiar os sonhos e objetivos um do outro sempre',
-      progress: 60,
+      progress: 0,
     },
     {
       id: 6,
@@ -62,23 +61,51 @@ export default function DreamsSection() {
 
   const [showAddDialog, setShowAddDialog] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
+  const [draggingId, setDraggingId] = useState<number | null>(null);
+  const sliderRefs = useRef<{ [key: number]: HTMLDivElement | null }>({});
 
-  const handleProgressClick = (id: number) => {
-    const dream = dreams.find((d) => d.id === id);
-    if (dream && dream.progress < 100) {
-      setDreams(
-        dreams.map((d) =>
-          d.id === id ? { ...d, progress: Math.min(d.progress + 10, 100) } : d
-        )
-      );
-      
-      const updatedDream = dreams.find((d) => d.id === id);
-      if (updatedDream && updatedDream.progress + 10 >= 100) {
-        setShowConfetti(true);
-        setTimeout(() => setShowConfetti(false), 3000);
-      }
+  const handleSliderChange = (id: number, clientX: number) => {
+    const slider = sliderRefs.current[id];
+    if (!slider) return;
+
+    const rect = slider.getBoundingClientRect();
+    const percentage = Math.max(0, Math.min(100, ((clientX - rect.left) / rect.width) * 100));
+    
+    setDreams(dreams.map((d) => 
+      d.id === id ? { ...d, progress: Math.round(percentage) } : d
+    ));
+
+    if (Math.round(percentage) >= 100) {
+      setShowConfetti(true);
+      setTimeout(() => setShowConfetti(false), 3000);
     }
   };
+
+  const handleMouseDown = (id: number, e: React.MouseEvent) => {
+    setDraggingId(id);
+    handleSliderChange(id, e.clientX);
+  };
+
+  const handleMouseMove = (e: MouseEvent) => {
+    if (draggingId !== null) {
+      handleSliderChange(draggingId, e.clientX);
+    }
+  };
+
+  const handleMouseUp = () => {
+    setDraggingId(null);
+  };
+
+  useState(() => {
+    if (draggingId !== null) {
+      window.addEventListener('mousemove', handleMouseMove);
+      window.addEventListener('mouseup', handleMouseUp);
+      return () => {
+        window.removeEventListener('mousemove', handleMouseMove);
+        window.removeEventListener('mouseup', handleMouseUp);
+      };
+    }
+  });
 
   return (
     <section id="dreams" className="py-20 px-4 bg-gradient-to-b from-background to-baby-blue/10 relative overflow-hidden">
@@ -109,7 +136,7 @@ export default function DreamsSection() {
           Sonhos Para Realizarmos Juntos
         </h2>
         <p className="body-md text-center text-muted-foreground mb-16">
-          Clique nas barras de progresso para atualizar
+          Arraste as barras de progresso para atualizar
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
@@ -134,11 +161,20 @@ export default function DreamsSection() {
                       <span className="text-muted-foreground">Progresso</span>
                       <span className="text-primary font-semibold">{dream.progress}%</span>
                     </div>
-                    <Progress
-                      value={dream.progress}
-                      className="cursor-pointer"
-                      onClick={() => handleProgressClick(dream.id)}
-                    />
+                    <div
+                      ref={(el) => { sliderRefs.current[dream.id] = el; }}
+                      className="relative h-3 bg-muted rounded-full cursor-pointer overflow-hidden"
+                      onMouseDown={(e) => handleMouseDown(dream.id, e)}
+                    >
+                      <div
+                        className="absolute left-0 top-0 h-full bg-gradient-to-r from-primary to-accent transition-all duration-150 rounded-full"
+                        style={{ width: `${dream.progress}%` }}
+                      />
+                      <div
+                        className="absolute top-1/2 -translate-y-1/2 w-5 h-5 bg-white border-2 border-primary rounded-full shadow-lg transition-all duration-150"
+                        style={{ left: `calc(${dream.progress}% - 10px)` }}
+                      />
+                    </div>
                   </div>
                 </CardContent>
               </Card>

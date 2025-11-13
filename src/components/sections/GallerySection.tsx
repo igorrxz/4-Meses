@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { X, ChevronLeft, ChevronRight, Plus } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, Plus, Sparkles } from 'lucide-react';
 import { Dialog, DialogContent } from '../ui/dialog';
 import { Button } from '../ui/button';
 import ImageWithHeicSupport from '../ImageWithHeicSupport';
@@ -60,9 +60,15 @@ export default function GallerySection() {
   return (
     <section id="gallery" className="py-20 px-4 bg-gradient-to-b from-light-blue/10 to-background">
       <div className="max-w-7xl mx-auto">
-        <h2 className="heading-lg text-center text-foreground mb-4">
-          Nossas Fotos
-        </h2>
+        <div className="heading-lg text-center mb-4 relative flex justify-center">
+          <h2 className="relative z-10">
+            <span className="bg-gradient-to-r from-primary via-accent to-love-pink bg-clip-text text-transparent">
+              Nossas Fotos
+            </span>
+          </h2>
+          <Sparkles className="absolute -top-2 -right-8 text-primary animate-pulse" size={24} />
+          <Sparkles className="absolute -bottom-2 -left-8 text-accent animate-pulse" size={20} style={{ animationDelay: '0.5s' }} />
+        </div>
         <p className="body-md text-center text-muted-foreground mb-16">
           Momentos especiais que guardamos no coração
         </p>

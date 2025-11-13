@@ -30,7 +30,7 @@ export default function HeroSection() {
           <h1 className="heading-xl text-foreground mb-6 drop-shadow-lg">
             Para o Amor da Minha Vida
           </h1>
-          <p className="body-lg text-foreground/90 mb-8 max-w-2xl mx-auto">
+          <p className="body-lg text-slate-800 dark:text-slate-200 mb-8 max-w-2xl mx-auto font-semibold drop-shadow-[0_2px_8px_rgba(143,214,255,0.4)]">
             Cada momento ao seu lado é uma dádiva. Este site é uma pequena
             demonstração do meu amor infinito por você.
           </p>

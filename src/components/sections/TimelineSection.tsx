@@ -40,7 +40,7 @@ const milestones: Milestone[] = [
     title: 'Nos assumimos publicamente',
     description: 'Mesmo sem pedido...',
     fullStory: 'Que sorte a minha de ter encontrado uma garota tão emocionada quanto eu KKKKKKKKK. Como pode ela ter aceitado assumir nosso quase namoro assim...',
-    image: timelinePhotos[2],
+    image: timelinePhotos[5],
     imageAlt: 'Nossa foto especial',
   },
   {

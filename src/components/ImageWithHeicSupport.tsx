@@ -40,7 +40,7 @@ export default function ImageWithHeicSupport({
     return () => {
       isMounted = false;
       // Clean up object URLs to prevent memory leaks
-      if (imageSrc.startsWith('blob:')) {
+      if (imageSrc && imageSrc.startsWith('blob:')) {
         URL.revokeObjectURL(imageSrc);
       }
     };

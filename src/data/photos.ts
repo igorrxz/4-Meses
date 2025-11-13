@@ -8,6 +8,7 @@ export const timelinePhotos = [
   '/src/img/IMG_0600.JPG',
   '/src/img/IMG_0563.JPG',
   '/src/img/IMG_0590.WEBP',
+  '/src/img/WhatsApp Image 2025-11-12 at 20.53.08.jpg',
 ];
 
 // Gallery photos - mix of all your photos

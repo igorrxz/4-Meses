@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Heart, Sparkles, Star, Smile, Sun, Moon, Coffee, Music, Camera, Gift } from 'lucide-react';
+import { Heart, Sparkles, Star, Smile, Sun, Moon, Coffee, Music, Camera, Flame } from 'lucide-react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '../ui/dialog';
 
 interface Reason {
@@ -37,8 +37,8 @@ const reasons: Reason[] = [
   {
     id: 5,
     icon: Sun,
-    title: 'Sua Energia',
-    description: 'Sua energia positiva transforma qualquer momento em algo especial e memorável.',
+    title: 'Seu Cuidado',
+    description: 'Admiro profundamente o cuidado que você dedica às outras pessoas, e principalmente comigo. Sua compaixão é verdadeira.',
   },
   {
     id: 6,
@@ -159,15 +159,16 @@ export default function LoveReasonsSection() {
             </DialogTitle>
           </DialogHeader>
           <div className="space-y-6 text-center py-8">
-            <Heart size={64} className="mx-auto text-love-pink animate-pulse-glow" />
+            <Flame size={64} className="mx-auto text-primary animate-pulse-glow" strokeWidth={3} />
             <p className="body-lg text-foreground leading-relaxed">
-              O maior motivo pelo qual eu te amo é simplesmente porque você é VOCÊ.
-              Não existe ninguém como você no mundo inteiro. Você é única, especial,
-              e faz minha vida ter sentido. Cada dia ao seu lado é uma bênção, e eu
-              sou eternamente grato por ter você na minha vida.
+              O maior motivo pelo qual eu te amo é porque você carrega em si o brilho 
+              do Espírito Santo. Sua fé, sua luz e sua bondade refletem a graça divina 
+              que habita em você. Você é um presente de Deus na minha vida, e cada dia 
+              ao seu lado me aproxima mais Dele. Sua presença ilumina meu caminho e me 
+              inspira a ser uma pessoa melhor aos olhos do Senhor.
             </p>
             <p className="heading-sm text-primary">
-              Eu te amo mais do que palavras podem expressar! 💙
+              Eu te amo mais do que palavras podem expressar!
             </p>
           </div>
         </DialogContent>

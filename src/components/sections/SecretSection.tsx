@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Lock, Heart, Sparkles } from 'lucide-react';
+import { Lock, Sparkles } from 'lucide-react';
 import { Input } from '../ui/input';
 import { Button } from '../ui/button';
 
@@ -77,7 +77,10 @@ export default function SecretSection() {
               ))}
             </div>
 
-            <Heart size={80} className="mx-auto text-love-pink mb-8 animate-pulse-glow" />
+            <div className="relative inline-block mb-8">
+              <Sparkles size={80} className="mx-auto text-primary animate-pulse-glow" />
+              <Sparkles size={40} className="absolute top-0 right-0 text-accent animate-pulse" style={{ animationDelay: '0.5s' }} />
+            </div>
             
             <h2 className="heading-lg text-primary mb-6">
               Mensagem Especial Para Você
