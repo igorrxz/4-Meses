@@ -83,12 +83,12 @@ export default function Navigation() {
             variant="ghost"
             size="icon"
             onClick={toggleTheme}
-            className="glass-card rounded-full w-10 h-10 shadow-lg hover:scale-110 transition-transform duration-300"
+            className="rounded-full w-10 h-10 shadow-lg hover:scale-110 transition-transform duration-300 bg-slate-700/30 hover:bg-slate-700/40 dark:bg-accent-blue/30 dark:hover:bg-accent-blue/40"
           >
             {isDark ? (
-              <Sun size={20} className="text-primary" />
+              <Sun size={20} className="text-accent-blue" />
             ) : (
-              <Moon size={20} className="text-primary" />
+              <Moon size={20} className="text-slate-700" />
             )}
           </Button>
 
@@ -154,12 +154,12 @@ export default function Navigation() {
               <Button 
                 variant="ghost" 
                 size="icon"
-                className="glass-card rounded-full w-12 h-12 shadow-lg hover:scale-110 transition-transform duration-300"
+                className="rounded-full w-12 h-12 shadow-lg hover:scale-110 transition-transform duration-300 bg-accent-blue/30 hover:bg-accent-blue/40"
               >
                 {isOpen ? (
-                  <X className="h-6 w-6 text-primary" />
+                  <X className="h-6 w-6 text-accent-blue" />
                 ) : (
-                  <Menu className="h-6 w-6 text-primary" />
+                  <Menu className="h-6 w-6 text-accent-blue" />
                 )}
               </Button>
             </SheetTrigger>
